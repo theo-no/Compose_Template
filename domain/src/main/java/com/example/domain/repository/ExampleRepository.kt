@@ -1,7 +1,8 @@
 package com.example.domain.repository
 
 import com.example.domain.model.ExampleModel
+import com.example.domain.model.NetworkResult
 
 interface ExampleRepository {
-    fun getExampleModel(): ExampleModel
+    suspend fun getExampleRepos(user: String): NetworkResult<List<ExampleModel>>
 }

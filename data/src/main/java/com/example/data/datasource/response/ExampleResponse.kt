@@ -1,6 +1,6 @@
-package com.example.domain.model
+package com.example.data.datasource.response
 
-data class ExampleModel(
+data class ExampleResponse(
     val id: Long,
     val name: String,
     val htmlUrl: String,

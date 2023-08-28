@@ -5,7 +5,5 @@ import javax.inject.Inject
 
 class ExampleDataSource @Inject constructor(
 ){
-    fun getExampleModel(): ExampleModel{
-        return ExampleModel("exampleModel")
-    }
+
 }
