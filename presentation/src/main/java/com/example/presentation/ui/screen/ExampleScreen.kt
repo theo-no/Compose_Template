@@ -1,5 +1,6 @@
 package com.example.presentation.ui.screen
 
+import android.util.Log
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
@@ -11,6 +12,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.presentation.viewmodel.ExampleViewModel
 
+private const val TAG = "ExampleScreen 차선호"
 @Composable
 fun ExampleScreen(
     viewModel: ExampleViewModel = hiltViewModel(),

@@ -24,18 +24,11 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideConverterFactory(
-        gson: Gson
-    ): Converter.Factory = GsonConverterFactory.create(gson)
-
-    @Singleton
-    @Provides
     fun provideRetrofit(
-        @Named("BASE_URL") baseUrl: String,
-        converterFactory: Converter.Factory
+        @Named("BASE_URL") baseUrl: String
     ): Retrofit = Retrofit.Builder()
         .baseUrl(baseUrl)
-        .addConverterFactory(converterFactory)
+        .addConverterFactory(GsonConverterFactory.create())
         .build()
 
     @Singleton
@@ -43,6 +36,5 @@ object NetworkModule {
     fun provideExampleService(
         retrofit: Retrofit
     ): ExampleService = retrofit.create(ExampleService::class.java)
-
 
 }
