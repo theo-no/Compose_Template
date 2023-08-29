@@ -27,6 +27,7 @@ fun ExampleScreen(
             }
         }
         items(viewModel.exampleRepos.value) {
+            Log.d(TAG, "item -> $it")
             Text(it.name)
         }
     }
