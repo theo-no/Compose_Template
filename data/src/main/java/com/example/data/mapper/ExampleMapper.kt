@@ -5,7 +5,6 @@ import com.example.domain.model.ExampleModel
 
 fun ExampleResponse.toDomain(): ExampleModel{
     return ExampleModel(
-        id, name
-//        , htmlUrl, url, gitUrl
+        id, name, htmlUrl, url, gitUrl
     )
 }
