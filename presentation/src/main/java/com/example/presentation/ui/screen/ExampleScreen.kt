@@ -13,13 +13,18 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.presentation.viewmodel.ExampleViewModel
 
+//collectAsStateWithLifecycle 찾아보기
 private const val TAG = "ExampleScreen 차선호"
 @Composable
 fun ExampleScreen(
     viewModel: ExampleViewModel = hiltViewModel(),
     navController: NavController
 ){
+
+    val reposState = viewModel.exampleRepos.collectAsState()
     LazyColumn {
+
+
         item {
             Button(onClick = {
                 viewModel.getExampleRepos("theo-no")
@@ -27,7 +32,7 @@ fun ExampleScreen(
                 Text("리포지토리 가져오기")
             }
         }
-        items(viewModel.exampleRepos.value) {
+        items(reposState.value) {
             Log.d(TAG, "item -> $it")
             Text(it.name)
         }
