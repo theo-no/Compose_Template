@@ -11,17 +11,13 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
+
 @Module
 @InstallIn(SingletonComponent::class)
-object RepositoryModule {
-//    @Singleton
-//    @Provides
-//    fun provideGitHubRepository(gitHubService: GitHubService): GitHubRepository{
-//        return GitHubRepositoryImpl(gitHubService)
-//    }
+object DataSourceModule {
     @Singleton
     @Provides
-    fun provideGitHubRepository(gitHubDataSource: GitHubDataSource): GitHubRepository{
-        return GitHubRepositoryImpl(gitHubDataSource)
+    fun provideGitHubRepository(gitHubService: GitHubService): GitHubDataSource {
+        return GitHubDataSourceImpl(gitHubService)
     }
 }

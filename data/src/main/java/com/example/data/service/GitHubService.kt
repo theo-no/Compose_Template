@@ -1,8 +1,7 @@
 package com.example.data.service
 
-import com.example.data.datasource.response.RepoInfoResponse
-import com.example.data.datasource.response.RepoResponse
-import com.example.domain.model.RepoInfoDto
+import com.example.data.entity.response.RepoInfoResponse
+import com.example.data.entity.response.RepoResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 

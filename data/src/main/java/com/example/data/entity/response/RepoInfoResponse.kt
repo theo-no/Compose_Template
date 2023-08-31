@@ -1,4 +1,4 @@
-package com.example.data.datasource.response
+package com.example.data.entity.response
 
 data class RepoInfoResponse(
     val name: String,
