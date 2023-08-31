@@ -1,13 +1,12 @@
 package com.example.di
 
-import com.example.data.service.ExampleService
-import com.google.gson.Gson
-import dagger.Binds
+import com.example.data.service.GitHubService
+import com.google.gson.FieldNamingPolicy
+import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import retrofit2.Converter
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Named
@@ -15,7 +14,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object NetworkModule {
+object GitHubModule {
 
     @Singleton
     @Provides
@@ -28,13 +27,19 @@ object NetworkModule {
         @Named("BASE_URL") baseUrl: String
     ): Retrofit = Retrofit.Builder()
         .baseUrl(baseUrl)
-        .addConverterFactory(GsonConverterFactory.create())
+        .addConverterFactory(
+            GsonConverterFactory.create(
+                GsonBuilder()
+                .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
+                .create()
+            )
+        )
         .build()
 
     @Singleton
     @Provides
-    fun provideExampleService(
+    fun provideGitHubService(
         retrofit: Retrofit
-    ): ExampleService = retrofit.create(ExampleService::class.java)
+    ): GitHubService = retrofit.create(GitHubService::class.java)
 
 }

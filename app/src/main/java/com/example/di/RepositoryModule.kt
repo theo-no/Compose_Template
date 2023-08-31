@@ -1,8 +1,8 @@
 package com.example.di
 
-import com.example.data.repository.ExampleRepositoryImpl
-import com.example.data.service.ExampleService
-import com.example.domain.repository.ExampleRepository
+import com.example.data.repository.GitHubRepositoryImpl
+import com.example.data.service.GitHubService
+import com.example.domain.repository.GitHubRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,7 +14,7 @@ import javax.inject.Singleton
 object RepositoryModule {
     @Singleton
     @Provides
-    fun provideExampleRepository(exampleService: ExampleService): ExampleRepository{
-        return ExampleRepositoryImpl(exampleService)
+    fun provideGitHubRepository(GitHubService: GitHubService): GitHubRepository{
+        return GitHubRepositoryImpl(GitHubService)
     }
 }

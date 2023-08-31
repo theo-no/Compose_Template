@@ -1,17 +1,17 @@
 package com.example.domain.usecase
 
 import android.util.Log
-import com.example.domain.model.ExampleModel
+import com.example.domain.model.RepoDto
 import com.example.domain.model.NetworkResult
-import com.example.domain.repository.ExampleRepository
+import com.example.domain.repository.GitHubRepository
 import javax.inject.Inject
 
-private const val TAG = "ExampleUseCase 차선호"
-class ExampleUseCase @Inject constructor(
-    private val exampleRepository: ExampleRepository
+private const val TAG = "SearchReposUseCase 차선호"
+class SearchReposUseCase @Inject constructor(
+    private val gitHubRepository: GitHubRepository
 ){
-    suspend operator fun invoke(user: String): List<ExampleModel> {
-        return when (val result = exampleRepository.getExampleRepos(user)) {
+    suspend operator fun invoke(user: String): List<RepoDto> {
+        return when (val result = gitHubRepository.getUserRepos(user)) {
             is NetworkResult.Success -> {
                 Log.d(TAG, "success -> ${result.data}")
                 result.data
