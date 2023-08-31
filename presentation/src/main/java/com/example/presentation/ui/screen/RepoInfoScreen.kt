@@ -22,10 +22,12 @@ import com.example.presentation.viewmodel.RepoInfoViewModel
 private const val TAG = "RepoInfoScreen 차선호"
 @Composable
 fun RepoInfoScreen(
+    userName: String = "",
     repoName: String = "",
     viewModel: RepoInfoViewModel = hiltViewModel(),
     navController: NavController
 ){
+    viewModel.getRepoInfo(userName, repoName)
     val repoInfoDtoState by viewModel.selectedRepo.collectAsState() // CollectAsState를 이용해 상태 플로우 감시
     Log.d(TAG, "RepoInfoScreen... $repoInfoDtoState")
     Column(
@@ -38,7 +40,7 @@ fun RepoInfoScreen(
         )
         Spacer(modifier = Modifier.size(8.dp))
         Text(
-            text = repoInfoDtoState.description,
+            text = repoInfoDtoState.description?:"No Description",
             fontSize = 16.sp
         )
         Spacer(modifier = Modifier.size(8.dp))

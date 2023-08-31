@@ -20,7 +20,7 @@ class GitHubRepositoryImpl @Inject constructor(
     }
 
     override suspend fun getRepoInfo(user: String, repo: String): NetworkResult<RepoInfoDto> {
-        Log.d(TAG, "getRepoInfo... $user ")
+        Log.d(TAG, "getRepoInfo... $user $repo ")
         return handleApi { gitHubService.getRepoInfo(user, repo).toDomain()}
     }
 }

@@ -96,7 +96,7 @@ fun SearchReposScreen(
                         repo = it,
                         onClick = {
 //                            navController.navigate(Screen.RepoInfo.route)
-                            navController.navigate(Screen.RepoInfo.route+ it.name)
+                            navController.navigate(Screen.RepoInfo.route+viewModel.userName.value+"/"+it.name)
                         }
                     )
                     Spacer(modifier = Modifier.size(4.dp))

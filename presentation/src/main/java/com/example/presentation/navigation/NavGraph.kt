@@ -25,13 +25,18 @@ fun NavGraph(
             SearchReposScreen(navController = navController)
         }
         composable(
-            route = Screen.RepoInfo.route+"{repo}",
-            arguments = listOf(navArgument("repo"){
-                type = NavType.StringType
-            })
+            route = Screen.RepoInfo.route+"{user}/{repo}",
+            arguments = listOf(navArgument("user"){
+                    type = NavType.StringType
+                },
+                navArgument("repo"){
+                    type = NavType.StringType
+                }
+            )
         ){
+            val user = it.arguments?.getString("user")?:""
             val repo = it.arguments?.getString("repo")?:""
-            RepoInfoScreen(repoName = repo, navController = navController)
+            RepoInfoScreen(userName = user, repoName = repo, navController = navController)
         }
     }
 } // End of setUpNavGraph

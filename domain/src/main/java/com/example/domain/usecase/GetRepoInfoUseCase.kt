@@ -18,7 +18,7 @@ class GetRepoInfoUseCase @Inject constructor(
                 result.data
             }
             else -> {
-                Log.d(TAG, "fail...")
+                Log.d(TAG, "fail...$result")
                 RepoInfoDto()
             }
         }
