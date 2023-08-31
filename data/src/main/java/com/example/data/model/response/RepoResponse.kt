@@ -1,6 +1,4 @@
-package com.example.data.entity.response
-
-import com.google.gson.annotations.SerializedName
+package com.example.data.model.response
 
 data class RepoResponse(
     val id: Long,

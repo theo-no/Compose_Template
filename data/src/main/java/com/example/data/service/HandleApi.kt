@@ -1,7 +1,7 @@
 package com.example.data.service
 
 import android.util.Log
-import com.example.domain.model.NetworkResult
+import com.example.data.model.NetworkResult
 
 internal inline fun <T> handleApi(transform: () -> T): NetworkResult<T> = try {
     NetworkResult.Success(transform.invoke())

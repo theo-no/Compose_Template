@@ -1,15 +1,11 @@
 package com.example.data.datasource.remote
 
 import android.util.Log
-import com.example.data.entity.response.RepoInfoResponse
-import com.example.data.entity.response.RepoResponse
-import com.example.data.mapper.toDomain
+import com.example.data.model.response.RepoInfoResponse
+import com.example.data.model.response.RepoResponse
 import com.example.data.service.GitHubService
 import com.example.data.service.handleApi
-import com.example.domain.model.NetworkResult
-import com.example.domain.model.RepoDto
-import com.example.domain.model.RepoInfoDto
-import javax.inject.Inject
+import com.example.data.model.NetworkResult
 
 private const val TAG = "GitHubDataSourceImpl 차선호"
 class GitHubDataSourceImpl(

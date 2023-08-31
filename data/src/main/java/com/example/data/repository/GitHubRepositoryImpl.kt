@@ -4,10 +4,8 @@ package com.example.data.repository
 import android.util.Log
 import com.example.data.datasource.remote.GitHubDataSource
 import com.example.data.mapper.toDomain
-import com.example.data.service.GitHubService
-import com.example.data.service.handleApi
 import com.example.domain.model.RepoDto
-import com.example.domain.model.NetworkResult
+import com.example.data.model.NetworkResult
 import com.example.domain.model.RepoInfoDto
 import com.example.domain.repository.GitHubRepository
 import javax.inject.Inject
