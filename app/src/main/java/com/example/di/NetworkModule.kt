@@ -7,8 +7,11 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 import javax.inject.Named
 import javax.inject.Singleton
 
@@ -23,6 +26,20 @@ object NetworkModule {
 
     @Singleton
     @Provides
+    fun provideOkHttpClient(): OkHttpClient = OkHttpClient.Builder()
+            .readTimeout(5000, TimeUnit.MILLISECONDS)
+            .connectTimeout(5000, TimeUnit.MILLISECONDS)
+            .addInterceptor(HttpLoggingInterceptor())
+//            .addNetworkInterceptor(XAccessTokenInterceptor()) // JWT 자동 헤더 전송
+//            .addInterceptor(AddCookiesInterceptor())  //쿠키 전송
+//            .addInterceptor(ReceivedCookiesInterceptor()) //쿠키 추출
+            .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+            .build()
+//    }
+
+
+    @Singleton
+    @Provides
     fun provideRetrofit(
         @Named("BASE_URL") baseUrl: String
     ): Retrofit = Retrofit.Builder()
@@ -34,6 +51,7 @@ object NetworkModule {
                 .create()
             )
         )
+        .client(provideOkHttpClient())
         .build()
 
     @Singleton
