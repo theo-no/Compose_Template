@@ -21,6 +21,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.presentation.navigation.NavGraph
+import com.example.presentation.ui.screen.MainScreen
 import com.example.presentation.ui.theme.ComposeTemplateTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -32,33 +33,34 @@ class MainActivity : ComponentActivity() {
         setContent {
             ComposeTemplateTheme {
                 // A surface container using the 'background' color from the theme
-                Scaffold(
-                    topBar = {
-                        // 스텝 1: `topBar`를 `TopAppBar`로 채워 봅시다.
-                        TopAppBar(
-                            title = {
-                                Text(
-                                    "Compose 아키텍처"
-                                )
-                            },
-                            navigationIcon = {
-                                IconButton(onClick = {
-                                    onBackPressed()
-                                }) {
-                                    Image(
-                                        imageVector = Icons.Filled.ArrowBack,
-                                        contentDescription = "뒤로가기"
-                                    )
-                                }
-                            }
-                        )
-                    }) {
-                    Surface(
-                        modifier = Modifier.padding(it)
-                    ) {
-                        NavGraph()
-                    }
-                }
+                MainScreen(rememberNavController())
+//                Scaffold(
+//                    topBar = {
+//                        // 스텝 1: `topBar`를 `TopAppBar`로 채워 봅시다.
+//                        TopAppBar(
+//                            title = {
+//                                Text(
+//                                    "Compose 아키텍처"
+//                                )
+//                            },
+//                            navigationIcon = {
+//                                IconButton(onClick = {
+//                                    onBackPressed()
+//                                }) {
+//                                    Image(
+//                                        imageVector = Icons.Filled.ArrowBack,
+//                                        contentDescription = "뒤로가기"
+//                                    )
+//                                }
+//                            }
+//                        )
+//                    }) {
+//                    Surface(
+//                        modifier = Modifier.padding(it)
+//                    ) {
+//                        NavGraph()
+//                    }
+//                }
             }
         }
     }
